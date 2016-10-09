@@ -1,9 +1,9 @@
 package com.funtik.aprocsination.controller;
 
+import com.funtik.aprocsination.ConverterStringDouble;
 import com.funtik.aprocsination.model.Point;
 import com.funtik.aprocsination.math.Func;
 import java.net.URL;
-import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,10 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.*;
-import javafx.util.StringConverter;
-import javafx.util.converter.FormatStringConverter;
-import javafx.util.converter.NumberStringConverter;
+import javafx.scene.control.cell.TextFieldTableCell;
 
 /**
  * FXML Controller class
@@ -43,6 +40,8 @@ public class PointController implements Initializable {
     private TextField tfX;        
     @FXML
     private TextField tfY;
+    
+    private final ConverterStringDouble converterTableCell = new ConverterStringDouble();
             
     /**
      * Initializes the controller class.
@@ -50,48 +49,20 @@ public class PointController implements Initializable {
      * @param rb
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) {   
         tcT.setCellValueFactory(new PropertyValueFactory<>("t"));
         tcX.setCellValueFactory(new PropertyValueFactory<>("x"));
         tcY.setCellValueFactory(new PropertyValueFactory<>("y"));
         
-        /*
-        tcT.setCellFactory(column -> {
-            return new TableCell<Point, Double>() {
-                @Override
-                protected void updateItem(Double item, boolean empty) {
-                    super.updateItem(item, empty);
-                }
-            };
-        });*/       
-       tcX.setCellFactory(TextFieldTableCell.<Point, Double>forTableColumn(new StringConverter<Double>() {
-            @Override
-            public String toString(Double d) {
-                return String.valueOf(d.doubleValue());
-            }
-
-            @Override
-            public Double fromString(String string) {
-                //if(!Func.isDouble(string)) return null;
-                return Double.parseDouble(string);
-            }
-        }));
-        tcY.setCellFactory(TextFieldTableCell.<Point, Double>forTableColumn(new StringConverter<Double>() {
-            @Override
-            public String toString(Double d) {
-                return String.valueOf(d);
-            }
-
-            @Override
-            public Double fromString(String string) {
-                //if(!Func.isDouble(string)) return null;
-                return Double.parseDouble(string);
-            }
-        }));
-       
-        //tcY.setCellFactory(TextFieldTableCell.forTableColumn());
+        tcT.setCellFactory(TextFieldTableCell.<Point,Double>forTableColumn(converterTableCell));
+        tcX.setCellFactory(TextFieldTableCell.<Point,Double>forTableColumn(converterTableCell));
+        tcY.setCellFactory(TextFieldTableCell.<Point,Double>forTableColumn(converterTableCell));
         
         table.setItems(data);
+        data.add(new Point(1, 2, 3));
+        data.add(new Point(1, 2, 3));
+        data.add(new Point(1, 2, 3));
+        
         
         tfT.setTextFormatter(new TextFormatter<>(Func.FILTER_DOUBLE));
         tfX.setTextFormatter(new TextFormatter<>(Func.FILTER_DOUBLE));
