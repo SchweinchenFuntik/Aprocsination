@@ -1,0 +1,74 @@
+package com.funtik.aprocsination.controller;
+
+import com.funtik.aprocsination.math.Func;
+import com.funtik.aprocsination.model.Point;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+
+/**
+ * FXML Controller class
+ *
+ * @author funtik
+ */
+public class FuncController implements Initializable {
+    
+    private final ObservableMap<String, Node> hash = FXCollections.observableHashMap();
+    private final ObservableMap<String, ObservableList<Point>> hashDataTable 
+            = FXCollections.observableHashMap();
+    private final ObservableMap<String, 
+            ObservableList<XYChart.Series<Double, Double>>> hashDataGraph
+            = FXCollections.observableHashMap();
+    
+    private final ObservableList<XYChart.Series<Double, Double>> dataGraph 
+            = FXCollections.observableArrayList();
+    private final ObservableList<Point> dataTable = FXCollections.observableArrayList();
+ 
+    @FXML
+    private ScrollPane spFunc;
+    @FXML
+    private LineChart<Double, Double> graph;
+    @FXML
+    private TableView<Point> table;
+    @FXML
+    private TableColumn<Point, Double> tcT;
+    @FXML
+    private TableColumn<Point, Double> tcX;
+    @FXML
+    private TableColumn<Point, Double> tcY;
+    @FXML
+    private ChoiceBox<String> cbMethod;
+    /**
+     * Initializes the controller class.
+     * @param url
+     * @param rb
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        Pane p = Func.loadPane("FuncMethod");
+        spFunc.setContent(p);
+        hash.put("FuncMethod", p);
+        
+        tcT.setCellValueFactory(new PropertyValueFactory<>("t"));
+        tcX.setCellValueFactory(new PropertyValueFactory<>("x"));
+        tcY.setCellValueFactory(new PropertyValueFactory<>("y"));
+        table.setItems(dataTable);
+        
+        graph.setData(dataGraph);
+    }    
+    
+    public void actionCbMethod(){}
+}

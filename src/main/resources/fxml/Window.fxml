@@ -7,9 +7,32 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="com.funtik.aprocsination.controller.WindowController">
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+      maxHeight="-Infinity" maxWidth="-Infinity"
+      fx:controller="com.funtik.aprocsination.controller.WindowController">
+    
+    <children>
+        <MenuBar VBox.vgrow="NEVER">
+            <Menu text="Построения графика" mnemonicParsing="false">
+                <items>
+                    <RadioMenuItem text="Функция" mnemonicParsing="false" 
+                                   onAction="#actionMiFunc"
+                                   selected="true" fx:id="rmiFunc">
+                        <toggleGroup>
+                            <ToggleGroup fx:id="radioGroup1" />
+                        </toggleGroup>
+                    </RadioMenuItem>
+                    <RadioMenuItem text="Точки" mnemonicParsing="false" 
+                                   onAction="#actionMiPoint"
+                                   toggleGroup="$radioGroup1" fx:id="rmiPoint"/>
+                </items>
+            </Menu>
+        </MenuBar>
+        <ScrollPane fx:id="pane" VBox.vgrow="ALWAYS"/>
+    </children>
+        
+    
     <stylesheets>
         <URL value="@/styles/window.css"/>
     </stylesheets>
-</BorderPane>
+</VBox>

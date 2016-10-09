@@ -1,8 +1,18 @@
 package com.funtik.aprocsination.controller;
 
+import com.funtik.aprocsination.math.Func;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableMap;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.RadioMenuItem;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 
 /**
  * FXML Controller class
@@ -10,7 +20,18 @@ import javafx.fxml.Initializable;
  * @author funtik
  */
 public class WindowController implements Initializable {
+    
+    private final ObservableMap<String, Node> hash = FXCollections.observableHashMap();
+    
+    @FXML
+    private ScrollPane pane;
+    @FXML
+    private RadioMenuItem rmiFunc;
+    @FXML
+    private RadioMenuItem rmiPoint;
 
+    private RadioMenuItem sel;
+            
     /**
      * Initializes the controller class.
      * @param url
@@ -18,7 +39,28 @@ public class WindowController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Pane p = Func.loadPane("Func");
+        sel = rmiFunc;
+        hash.put("Func", p);
+        hash.put("Point", Func.loadPane("Point"));
+        pane.setContent(p);
     }    
+    public void actionMiPoint(){
+        if(sel==rmiPoint) return;
+        sel = rmiPoint;
+        hash.put("Func", pane.getContent());
+        selectPane("Point");
+    }
+    public void actionMiFunc(){
+        if(sel==rmiFunc) return;
+        sel = rmiFunc;
+        hash.put("Point", pane.getContent());
+        selectPane("Func");
+    }
     
+    private void selectPane(String key){ 
+        Node n = hash.get(key);
+        if(n==null) n = Func.loadPane(key);
+        pane.setContent(n);
+    }
 }

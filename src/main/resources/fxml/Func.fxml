@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.collections.FXCollections ?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.funtik.aprocsination.controller.FuncController">
+    <padding>
+        <Insets top="10" left="5" bottom="10" right="5"/>
+    </padding>
+    
+    <top>
+        <HBox spacing="5">
+            <children>
+                <Label text="Выберите метод:"/>
+                <ChoiceBox value="Своя функция" fx:id="cbMethod" onAction="#actionCbMethod">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Своя функция" />
+                        </FXCollections>
+                    </items>
+                </ChoiceBox>
+            </children>
+        </HBox>
+    </top>
+    
+    
+    <left>
+        <ScrollPane fx:id="spFunc"/>
+    </left>
+    
+    <center>
+        <LineChart  fx:id="graph">
+            <xAxis><NumberAxis label="X"/></xAxis>
+            <yAxis><NumberAxis label="Y"/></yAxis>
+        </LineChart>
+    </center>
+    
+    <right>
+        <TableView fx:id="table">
+            <columns>
+                <TableColumn text="T" prefWidth="70" fx:id="tcT"/>
+                <TableColumn text="X" prefWidth="100" fx:id="tcX"/>
+                <TableColumn text="Y" prefWidth="100" fx:id="tcY"/>
+            </columns>
+        </TableView>
+    </right>
+</BorderPane>
