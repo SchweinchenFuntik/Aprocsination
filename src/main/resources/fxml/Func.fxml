@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.collections.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -9,17 +10,18 @@
 <?import javafx.scene.chart.*?>
 <?import javafx.collections.FXCollections ?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" 
+<BorderPane xmlns="http://javafx.com/javafx/8" 
+            xmlns:fx="http://javafx.com/fxml/1" fx:id="pane"
             fx:controller="com.funtik.aprocsination.controller.FuncController">
     <padding>
-        <Insets top="10" left="5" bottom="10" right="5"/>
+        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
     </padding>
     
     <top>
         <HBox spacing="5">
             <children>
-                <Label text="Выберите метод:"/>
-                <ChoiceBox value="Своя функция" fx:id="cbMethod" onAction="#actionCbMethod">
+                <Label text="Выберите метод:" />
+                <ChoiceBox fx:id="cbMethod" onAction="#actionCbMethod" value="Своя функция">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="Своя функция" />
@@ -27,27 +29,25 @@
                     </items>
                 </ChoiceBox>
             </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
         </HBox>
     </top>
     
-    
-    <left>
-        <ScrollPane fx:id="spFunc"/>
-    </left>
-    
     <center>
-        <LineChart  fx:id="graph">
-            <xAxis><NumberAxis label="X"/></xAxis>
-            <yAxis><NumberAxis label="Y"/></yAxis>
+        <LineChart fx:id="graph">
+            <xAxis><NumberAxis label="X" /></xAxis>
+            <yAxis><NumberAxis label="Y" /></yAxis>
         </LineChart>
     </center>
     
     <right>
         <TableView fx:id="table">
             <columns>
-                <TableColumn text="T" prefWidth="70" fx:id="tcT"/>
-                <TableColumn text="X" prefWidth="100" fx:id="tcX"/>
-                <TableColumn text="Y" prefWidth="100" fx:id="tcY"/>
+                <TableColumn fx:id="tcT" prefWidth="70" text="T" />
+                <TableColumn fx:id="tcX" prefWidth="100" text="X" />
+                <TableColumn fx:id="tcY" prefWidth="100" text="Y" />
             </columns>
         </TableView>
     </right>

@@ -1,4 +1,4 @@
-package com.funtik.aprocsination.math;
+package com.funtik.aprocsination;
 
 import java.io.IOException;
 import java.util.function.UnaryOperator;

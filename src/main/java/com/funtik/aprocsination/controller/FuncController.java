@@ -1,7 +1,8 @@
 package com.funtik.aprocsination.controller;
 
-import com.funtik.aprocsination.math.Func;
+import com.funtik.aprocsination.Func;
 import com.funtik.aprocsination.model.Point;
+import java.awt.BorderLayout;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -9,14 +10,15 @@ import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 /**
@@ -38,7 +40,7 @@ public class FuncController implements Initializable {
     private final ObservableList<Point> dataTable = FXCollections.observableArrayList();
  
     @FXML
-    private ScrollPane spFunc;
+    private BorderPane pane;
     @FXML
     private LineChart<Double, Double> graph;
     @FXML
@@ -59,7 +61,8 @@ public class FuncController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Pane p = Func.loadPane("FuncMethod");
-        spFunc.setContent(p);
+        BorderPane.setAlignment(p, Pos.BOTTOM_LEFT);
+        pane.setLeft(p);
         hash.put("FuncMethod", p);
         
         tcT.setCellValueFactory(new PropertyValueFactory<>("t"));

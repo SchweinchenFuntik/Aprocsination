@@ -25,7 +25,7 @@
        </TableView>
        <HBox spacing="5" VBox.vgrow="NEVER">
           <children>
-              <Label text="DT=" /> <TextField fx:id="tfT" prefColumnCount="5" />
+              <Label text="T=" /> <TextField fx:id="tfT" prefColumnCount="5" />
               <Label text="X=" /> <TextField fx:id="tfX" prefColumnCount="5" />
               <Label text="Y=" /> <TextField fx:id="tfY" prefColumnCount="5" />
               <Button text="Добавить" onAction="#add" />

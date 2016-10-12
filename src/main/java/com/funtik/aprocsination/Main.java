@@ -1,6 +1,5 @@
 package com.funtik.aprocsination;
 
-import com.funtik.aprocsination.math.Func;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;

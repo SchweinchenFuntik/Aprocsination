@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
-      maxHeight="-Infinity" maxWidth="-Infinity"
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:id="pane"
       fx:controller="com.funtik.aprocsination.controller.WindowController">
     
     <children>
@@ -28,7 +27,6 @@
                 </items>
             </Menu>
         </MenuBar>
-        <ScrollPane fx:id="pane" VBox.vgrow="ALWAYS"/>
     </children>
         
     

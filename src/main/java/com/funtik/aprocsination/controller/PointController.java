@@ -2,7 +2,7 @@ package com.funtik.aprocsination.controller;
 
 import com.funtik.aprocsination.ConverterStringDouble;
 import com.funtik.aprocsination.model.Point;
-import com.funtik.aprocsination.math.Func;
+import com.funtik.aprocsination.Func;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
