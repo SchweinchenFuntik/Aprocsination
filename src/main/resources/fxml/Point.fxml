@@ -27,20 +27,18 @@
             <children>
                 <TableView fx:id="table" editable="true" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn  text="T"  editable="true" prefWidth="100" fx:id="tcT"/>
                         <TableColumn  text="X" editable="true" prefWidth="150" fx:id="tcX"/>
                         <TableColumn  text="Y" prefWidth="150" fx:id="tcY"  />
                     </columns>
                 </TableView>
                 <HBox spacing="5" VBox.vgrow="NEVER">
                     <children>
-                        <Label text="T=" /> 
-                        <TextField fx:id="tfT" prefColumnCount="5" />
                         <Label text="X=" /> 
                         <TextField fx:id="tfX" prefColumnCount="5" />
                         <Label text="Y=" /> 
                         <TextField fx:id="tfY" prefColumnCount="5" />
                         <Button text="Добавить" onAction="#add" />
+                        <Button text="del" onAction="#del" />
                     </children>
                 </HBox>
             </children>

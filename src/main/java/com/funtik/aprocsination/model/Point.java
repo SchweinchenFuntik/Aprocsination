@@ -6,34 +6,16 @@ import javafx.beans.property.*;
  * @author funtik
  */
 public class Point {
-    private final DoubleProperty t;
     private final DoubleProperty x;
     private final DoubleProperty y;
     
     public Point(){
-        this.t = new SimpleDoubleProperty(0);
         this.x = new SimpleDoubleProperty(0);
         this.y = new SimpleDoubleProperty(0);
     }
-    public Point(double t, double x, double y){
-        this.t = new SimpleDoubleProperty(t);
+    public Point(double x, double y){
         this.x = new SimpleDoubleProperty(x);
         this.y = new SimpleDoubleProperty(y);
-        javafx.beans.property.ObjectPropertyBase<Double> d;
-    }
-
-    /**
-     * @return the t
-     */
-    public double getT() {
-        return t.doubleValue();
-    }
-
-    /**
-     * @param t the t to set
-     */
-    public void setT(double t) {
-        this.t.set(t);
     }
 
     /**
@@ -63,13 +45,6 @@ public class Point {
     public void setY(double y) {
         this.y.set(y);
     }
-    /**
-     * @return the t
-     */
-    public DoubleProperty tProperty() {
-        return t;
-    }
-
 
     /**
      * @return the x
