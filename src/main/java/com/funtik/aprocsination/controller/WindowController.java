@@ -17,7 +17,7 @@ import javafx.scene.layout.VBox;
  *
  * @author funtik
  */
-public class WindowController implements Initializable {
+public class WindowController extends Controller implements Initializable {
     
     private final ObservableMap<String, Node> hash = FXCollections.observableHashMap();
     

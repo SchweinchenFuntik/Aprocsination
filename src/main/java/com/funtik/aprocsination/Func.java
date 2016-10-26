@@ -1,5 +1,6 @@
 package com.funtik.aprocsination;
 
+import com.funtik.aprocsination.controller.Controller;
 import java.io.IOException;
 import java.util.function.UnaryOperator;
 import java.util.logging.Level;
@@ -23,6 +24,21 @@ public class Func {
         if(s.equals("") || Func.isInteger(s)) return t;
         return null;
     };
+    public static final UnaryOperator<TextFormatter.Change> FILTER_NAME = (t) -> {
+        // napisat @parsingName@
+        return t;
+    };
+    
+    public static boolean parsingName(String s){
+        for(int i=0; i<s.length(); i++){
+            char c = s.charAt(i);
+            if(!((c>='a' && c<='z') || (c>='A' && c<='Z'))){
+                boolean b = (c>='0' && c<='9') || c!='_'; 
+                if((i==0 && b) || !b) return false;
+            }
+        }
+        return true;
+    }
     
     public static boolean isDouble(String s){
         boolean b = false;
@@ -41,12 +57,14 @@ public class Func {
         return true;
     }
     public static Pane loadPane(String name){
-        Pane pane = null;
-        try{
-            pane = FXMLLoader.load(Func.class.getResource("/fxml/"+name+".fxml"));
+        Pane pane = null; FXMLLoader load;
+        load = new FXMLLoader(Func.class.getResource("/fxml/"+name+".fxml"));
+        try {
+            pane = load.load();
+            Controller.HASH.put(name, load.getController());
         } catch (IOException ex) {
             Logger.getLogger(Func.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }    
         return pane;
     }
 }

@@ -19,6 +19,7 @@ public class Point {
         this.t = new SimpleDoubleProperty(t);
         this.x = new SimpleDoubleProperty(x);
         this.y = new SimpleDoubleProperty(y);
+        javafx.beans.property.ObjectPropertyBase<Double> d;
     }
 
     /**
@@ -62,4 +63,26 @@ public class Point {
     public void setY(double y) {
         this.y.set(y);
     }
+    /**
+     * @return the t
+     */
+    public DoubleProperty tProperty() {
+        return t;
+    }
+
+
+    /**
+     * @return the x
+     */
+    public DoubleProperty xProperty() {
+        return x;
+    }
+
+    /**
+     * @return the y
+     */
+    public DoubleProperty yProperty() {
+        return y;
+    }
+
 }

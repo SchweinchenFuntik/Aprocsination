@@ -21,7 +21,7 @@
                               <Insets left="10.0" top="5.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField prefColumnCount="3" text="0.01" />
+                        <TextField prefColumnCount="3" text="0.01" fx:id="tfDt" />
                      </children>
                   </HBox>
                   <HBox>
@@ -31,7 +31,7 @@
                               <Insets top="5.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField prefColumnCount="10" />
+                        <TextField prefColumnCount="10" fx:id="tfFx"/>
                      </children>
                   </HBox>
                   <HBox>
@@ -41,7 +41,7 @@
                               <Insets top="5.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField prefColumnCount="10" />
+                        <TextField prefColumnCount="10" fx:id="tfFy"/>
                      </children>
                   </HBox>
                </children>

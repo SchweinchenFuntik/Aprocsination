@@ -1,5 +1,6 @@
 package com.funtik.aprocsination.controller;
 
+import com.funtik.aprocsination.ConverterStringDouble;
 import com.funtik.aprocsination.Func;
 import com.funtik.aprocsination.model.Point;
 import java.awt.BorderLayout;
@@ -18,6 +19,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
@@ -26,7 +28,7 @@ import javafx.scene.layout.Pane;
  *
  * @author funtik
  */
-public class FuncController implements Initializable {
+public class FuncController extends Controller implements Initializable {
     
     private final ObservableMap<String, Node> hash = FXCollections.observableHashMap();
     private final ObservableMap<String, ObservableList<Point>> hashDataTable 
@@ -35,7 +37,7 @@ public class FuncController implements Initializable {
             ObservableList<XYChart.Series<Double, Double>>> hashDataGraph
             = FXCollections.observableHashMap();
     
-    private final ObservableList<XYChart.Series<Double, Double>> dataGraph 
+    private ObservableList<XYChart.Series<Double, Double>> dataGraph 
             = FXCollections.observableArrayList();
     private final ObservableList<Point> dataTable = FXCollections.observableArrayList();
  
@@ -53,6 +55,8 @@ public class FuncController implements Initializable {
     private TableColumn<Point, Double> tcY;
     @FXML
     private ChoiceBox<String> cbMethod;
+    
+    private final ConverterStringDouble converterTableCell = new ConverterStringDouble();
     /**
      * Initializes the controller class.
      * @param url
@@ -68,10 +72,20 @@ public class FuncController implements Initializable {
         tcT.setCellValueFactory(new PropertyValueFactory<>("t"));
         tcX.setCellValueFactory(new PropertyValueFactory<>("x"));
         tcY.setCellValueFactory(new PropertyValueFactory<>("y"));
+        
+        tcT.setCellFactory(TextFieldTableCell.<Point, Double>forTableColumn(converterTableCell));
+        tcX.setCellFactory(TextFieldTableCell.<Point, Double>forTableColumn(converterTableCell));
+        tcY.setCellFactory(TextFieldTableCell.<Point, Double>forTableColumn(converterTableCell));
+        
         table.setItems(dataTable);
         
         graph.setData(dataGraph);
-    }    
+    }
     
     public void actionCbMethod(){}
+    
+    public void addDataGraph(ObservableList<XYChart.Data<Double, Double>> data){}
+    public void setDataGraph(ObservableList<XYChart.Data<Double, Double>> data){}
+    public void removeGraph(int n){}
+    public void removeGraph(){}
 }
