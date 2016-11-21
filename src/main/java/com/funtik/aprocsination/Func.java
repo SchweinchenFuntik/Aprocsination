@@ -44,6 +44,7 @@ public class Func {
         boolean b = false;
         for(int i=0; i<s.length(); i++){
             char c = s.charAt(i);
+            if(i==0 && c=='-') continue;
             if(c=='.' && !b) b = true; 
             else if(!(c>='0' && c<='9') || (b && c=='.')) return false;
         }
@@ -52,6 +53,7 @@ public class Func {
     public static boolean isInteger(String s){
         for(int i=0; i<s.length(); i++){
             char c = s.charAt(i);
+            if(i==0 && c=='-') continue;
             if(!(c>='0' && c<='9')) return false;
         }
         return true;

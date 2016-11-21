@@ -8,7 +8,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.funtik.aprocsination.controller.FuncMethodController">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.funtik.aprocsination.controller.FuncMethodController">
    <center>
       <ScrollPane pannable="true" vbarPolicy="ALWAYS">
          <content>
@@ -18,7 +19,7 @@
                      <children>
                         <Label text="Dt=">
                            <HBox.margin>
-                              <Insets left="10.0" top="5.0" />
+                                <Insets left="10.0" top="5.0" />
                            </HBox.margin>
                         </Label>
                         <TextField prefColumnCount="3" text="0.01" fx:id="tfDt" />

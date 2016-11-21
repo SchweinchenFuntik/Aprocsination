@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections ?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="pane" xmlns="http://javafx.com/javafx/8"
+            fx:controller="com.funtik.aprocsination.controller.AproController">
+    <top>
+        <HBox>
+            <children>
+                <Label text="Метод"/>
+                <ChoiceBox fx:id="cbMethod" value="Все">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Все"/>
+                            <String fx:value="Найменьших квадратов"/>
+                            <String fx:value="Гаууса"/>
+                            <String fx:value="Полином"/>
+                        </FXCollections>
+                    </items>
+                </ChoiceBox>
+            </children>
+        </HBox>
+    </top>
+    
+    <left>
+        <TableView editable="true" fx:id="table">
+            <columns>
+                <TableColumn editable="true" prefWidth="150" fx:id="columnX" />
+                <TableColumn editable="true" prefWidth="150" fx:id="columnY"/>
+            </columns>
+        </TableView>
+    </left>
+    
+</BorderPane>

@@ -26,9 +26,12 @@
                                    toggleGroup="$radioGroup1" fx:id="rmiPoint"/>
                 </items>
             </Menu>
+            <Menu text="Данные" mnemonicParsing="false">
+                <MenuItem text="Експорт" onAction="#excelExport" />
+                <MenuItem text="Импорт" onAction="#excelImport" />
+            </Menu>
         </MenuBar>
-    </children>
-        
+    </children>    
     
     <stylesheets>
         <URL value="@/styles/window.css"/>

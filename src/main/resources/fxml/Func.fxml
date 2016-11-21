@@ -25,6 +25,11 @@
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="Своя функция" />
+                            <String fx:value="Безье" />
+                            <String fx:value="Наименьших квадратов" />
+                            <String fx:value="Интерполяция(полином)" />
+                            <String fx:value="Лагранжа?" />
+                            <String fx:value="Метод Гаусса?" />
                         </FXCollections>
                     </items>
                 </ChoiceBox>

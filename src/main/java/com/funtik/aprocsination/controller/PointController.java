@@ -20,7 +20,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.StringConverter;
 
 /**
  * FXML Controller class
@@ -53,7 +52,9 @@ public class PointController extends Controller implements Initializable {
      * @param rb
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {       
+    public void initialize(URL url, ResourceBundle rb) {  
+        graph.setAxisSortingPolicy(LineChart.SortingPolicy.NONE);
+        
         tcX.setCellValueFactory(new PropertyValueFactory<>("x"));
         tcX.setCellFactory(TextFieldTableCell.<Point,Double>forTableColumn(converterTableCell));
         tcX.setOnEditCommit((TableColumn.CellEditEvent<Point, Double> e) -> {
@@ -64,7 +65,6 @@ public class PointController extends Controller implements Initializable {
                 e.getTableView().getItems().get(row).setX(d);
                 dataGraph.get(row).setXValue(d);
             }
-            
         });
         
         tcY.setCellValueFactory(new PropertyValueFactory<>("y"));
@@ -93,15 +93,12 @@ public class PointController extends Controller implements Initializable {
         //tcY.setCellFactory(TextFieldTableCell.<Point,Double>forTableColumn(converterTableCell));
         
         data.addListener((ListChangeListener.Change<? extends Point> c) -> {
-            System.out.println(c);
             while(c.next()){
                 if(c.wasAdded())
-                    c.getAddedSubList().forEach((t) -> {
-                        dataGraph.add(c.getFrom(), new Data<>(t.getX(), t.getY()));
+                    c.getAddedSubList().forEach(t -> {
+                       dataGraph.add(c.getFrom(), new Data<>(t.getX(), t.getY()));
                     });
-                else if(c.wasRemoved()){
-                    dataGraph.remove(c.getFrom());
-                }
+                else if(c.wasRemoved())  dataGraph.remove(c.getFrom());
             }
         });
         
@@ -120,7 +117,6 @@ public class PointController extends Controller implements Initializable {
         if(!sY.equals("")) y = Double.parseDouble(sY);
         Point p = new Point(x, y);
         data.add(p); 
-        //dataGraph.add(new XYChart.Data<>(p.getX(), p.getY()));
     }
     public void del(){
         data.remove(0);

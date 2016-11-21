@@ -11,8 +11,12 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
     
+    public static Stage stage;
+    
     @Override
     public void start(Stage primaryStage) {
+        stage = primaryStage;
+        
         Pane root = Func.loadPane("Window");
         
         Scene scene = new Scene(root);
